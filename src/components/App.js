@@ -4,7 +4,7 @@ import Header from "./Header";
 import Weather from "./Weather/Weather";
 import Search from "./Utils/Search";
 
-
+// TODO: instaler dotENV pour pouvoir lire les fichier env et envlocal
 class App extends Component {
     constructor(props) {
         super(props);
