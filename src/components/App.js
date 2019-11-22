@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Header from "./Header";
 import Weather from "./Weather/Weather";
 import Search from "./Search/Search";
-import { getWeatherData } from "../services/OwpService";
+import {getForecastData, getWeatherData} from "../services/OwpService";
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +38,8 @@ class App extends Component {
   search = async e => {
     this.setState({ displayWeatherCard: true, loading: true });
     const data = await getWeatherData(this.state.searchTerm);
+    const forecastData = await getForecastData(this.state.searchTerm);
+
 
     console.log("Mes données dans search", data);
 
@@ -48,9 +50,27 @@ class App extends Component {
         temperature: data.main.temp,
         status: data.weather[0].description,
         loading: false,
-        displayWeatherCard: true
+        displayWeatherCard: true,
+      // TODO: peut etre faire un for in ici pour prendre en compte chaque élément 0 1 2 ...
+      //  du tableau donné par la réponse correspndant a chaque tranche de 3heures de météo sur 5jours
+      //   for(forecastDatas in forecastData) {
+      //
+      // }
+        fCity: forecastData.list.name,
+        fIcon: forecastData.list.weather[0].id,
+        fTemperature: forecastData.list.main.temp,
+        fStatus: forecastData.list.weather[0].description,
       });
     }, 1400);
+  //   this.setState({
+  //     city: forecastData.name,
+  //     icon: forecastData.weather[0].id,
+  //     temperature: forecastData.main.temp,
+  //     status: forecastData.weather[0].description,
+  //     loading: false,
+  //     displayWeatherCard: true
+  //   });
+  // }, 1400);
   };
 
   render = () => {
