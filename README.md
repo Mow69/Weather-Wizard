@@ -18,3 +18,9 @@ On voudra :
 ## Configuration
 
 > Créer un fichier .env.local et y ajouter la variable `REACT_APP_API_KEY`
+
+![Aperçu 3](doc/preview_3.png "Aperçu 3")
+
+![Aperçu 2](doc/preview_2.png "Aperçu 2")
+
+![Aperçu 1](doc/preview_1.png "Aperçu 1")
